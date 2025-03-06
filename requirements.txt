@@ -1,6 +1,6 @@
 customtkinter~=5.2.0
 nuitka~=1.8.3
-spotipy~=2.23.0
+spotipy~=2.25.1
 twitchio~=2.7.0
 rich~=13.5.2
 pydantic~=2.3.0
