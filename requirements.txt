@@ -6,3 +6,4 @@ rich~=13.5.2
 pydantic~=2.3.0
 requests~=2.31.0
 twitchAPI~=2.5.7.1
+aiohttp>=3.10.11 # not directly required, pinned by Snyk to avoid a vulnerability
