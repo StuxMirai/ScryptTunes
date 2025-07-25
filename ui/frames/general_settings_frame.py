@@ -88,14 +88,14 @@ class GeneralSettingsFrame(CTkFrame):
         )
         self.client_secret.grid(row=7, column=0, padx=10, pady=5, sticky="ew")
 
-        # channel_points_reward
-        self.channel_points_reward = TextSettingRow(
-            self,
-            setting_name="channel_points_reward",
-            setting_description="(Optional) Name of your song request redeem",
-            initial_value=settings_controller.get("channel_points_reward"),
-        )
-        self.channel_points_reward.grid(row=8, column=0, padx=10, pady=5, sticky="ew")
+        # # channel_points_reward
+        # self.channel_points_reward = TextSettingRow(
+        #     self,
+        #     setting_name="channel_points_reward",
+        #     setting_description="(Optional) Name of your song request redeem",
+        #     initial_value=settings_controller.get("channel_points_reward"),
+        # )
+        # self.channel_points_reward.grid(row=8, column=0, padx=10, pady=5, sticky="ew")
 
         # spotify_client_id
         self.spotify_client_id = TextSettingRow(
@@ -131,9 +131,9 @@ class GeneralSettingsFrame(CTkFrame):
         self.settings_controller.set("token", self.token_row.get())
         self.settings_controller.set("client_id", self.client_id_row.get())
         self.settings_controller.set("client_secret", self.client_secret.get())
-        self.settings_controller.set(
-            "channel_points_reward", self.channel_points_reward.get()
-        )
+        # self.settings_controller.set(
+        #     "channel_points_reward", self.channel_points_reward.get()
+        # )
         self.settings_controller.set("spotify_client_id", self.spotify_client_id.get())
         self.settings_controller.set("spotify_secret", self.spotify_secret.get())
         self.settings_controller.set("rate_limit", self.rate_limit_row.get())

@@ -3,6 +3,6 @@ nuitka~=1.8.3
 spotipy~=2.25.1
 twitchio~=2.7.0
 rich~=13.5.2
-pydantic~=2.3.0
+pydantic~=2.11.7
 requests~=2.31.0
 twitchAPI~=2.5.7.1
