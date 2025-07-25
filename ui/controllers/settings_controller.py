@@ -39,6 +39,12 @@ class SettingsController:
                 config_data = json.load(f)
                 if 'welcome_message' not in config_data:
                     config_data['welcome_message'] = ""
+                # Remove deprecated commands if they exist
+                if 'permissions' in config_data:
+                    if 'recent_played_command' in config_data['permissions']:
+                        del config_data['permissions']['recent_played_command']
+                    if 'queue_command' in config_data['permissions']:
+                        del config_data['permissions']['queue_command']
                 if 'permissions' not in config_data:
                     config_data['permissions'] = {  # todo: find way not to hardcode so much
                         "ping_command": PermissionSetting(
@@ -47,14 +53,6 @@ class SettingsController:
                         ),
                         "np_command": PermissionSetting(
                             command_name="np_command",
-                            permission_config=PermissionConfig()
-                        ),
-                        "queue_command": PermissionSetting(
-                            command_name="queue_command",
-                            permission_config=PermissionConfig()
-                        ),
-                        "recent_played_command": PermissionSetting(
-                            command_name="recent_played_command",
                             permission_config=PermissionConfig()
                         ),
                         "songrequest_command": PermissionSetting(
@@ -77,8 +75,12 @@ class SettingsController:
         return True
 
     def save_config(self):
-        with open(constants.CONFIG, "w") as f:
-            json.dump(self.config_model.model_dump(), f, indent=4)
+        try:
+            with open(constants.CONFIG, "w") as f:
+                json.dump(self.config_model.model_dump(), f, indent=4)
+            return True
+        except Exception as e:
+            return False, str(e)
 
     def save_user_blacklist(self):
         with open(constants.USER_BLACKLIST, "w") as f:

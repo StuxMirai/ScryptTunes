@@ -39,7 +39,7 @@ NOTE: This bot requires Spotify Premium. This is a Spotify API reqirement and th
 ### 2. Setting Up Spotify
 1. Visit the [Spotify Developer Dashboard](https://developer.spotify.com/dashboard/applications).
 2. Click "Create an App" and fill in the necessary details.
- a. The only important one to get is to fill the "redirect uri" as `http://localhost:8080` WITHOUT A SLASH AT THE END 
+ a. The only important one to get is to fill the "redirect uri" as `http://127.0.0.1:8080` WITHOUT A SLASH AT THE END 
 
 3. Once the app is created, click settings.
 
