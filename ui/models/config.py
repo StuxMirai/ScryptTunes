@@ -19,8 +19,6 @@ class PermissionSetting(BaseModel):
 class PermissionSettingDict(BaseModel):
     ping_command: PermissionSetting
     np_command: PermissionSetting
-    queue_command: PermissionSetting
-    recent_played_command: PermissionSetting
     songrequest_command: PermissionSetting
 
 
@@ -44,14 +42,6 @@ class Config(BaseModel):
         ),
         np_command=PermissionSetting(
             command_name="np_command",
-            permission_config=PermissionConfig()
-        ),
-        queue_command=PermissionSetting(
-            command_name="queue_command",
-            permission_config=PermissionConfig()
-        ),
-        recent_played_command=PermissionSetting(
-            command_name="recent_played_command",
             permission_config=PermissionConfig()
         ),
         songrequest_command=PermissionSetting(

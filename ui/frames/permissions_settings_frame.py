@@ -40,24 +40,6 @@ class PermissionSettingsFrame(CTkFrame):
         )
         self.np_command.grid(row=1, column=0, padx=10, pady=5, sticky="ew")
 
-        self.queue_command = PermissionSettingRow(
-            parent=self,
-            setting_name="Queue Command",
-            setting_description="Change permissions on the !queue command",
-            initial_values=self.current_settings.queue_command.permission_config,
-            command_name="queue_command"  # todo: reference command in non-hardcoded way
-        )
-        self.queue_command.grid(row=2, column=0, padx=10, pady=5, sticky="ew")
-
-        self.recent_played_command = PermissionSettingRow(
-            parent=self,
-            setting_name="Recent Played Command",
-            setting_description="Change permissions on the !last command",
-            initial_values=self.current_settings.recent_played_command.permission_config,
-            command_name="recent_played_command"  # todo: reference command in non-hardcoded way
-        )
-        self.recent_played_command.grid(row=3, column=0, padx=10, pady=5, sticky="ew")
-
         self.songrequest_command = PermissionSettingRow(
             parent=self,
             setting_name="Song Request Command",
@@ -65,7 +47,7 @@ class PermissionSettingsFrame(CTkFrame):
             initial_values=self.current_settings.songrequest_command.permission_config,
             command_name="songrequest_command"  # todo: reference command in non-hardcoded way
         )
-        self.songrequest_command.grid(row=3, column=0, padx=10, pady=5, sticky="ew")
+        self.songrequest_command.grid(row=2, column=0, padx=10, pady=5, sticky="ew")
 
         # Save Settings
         self.save_button = CTkButton(self, text="Save", command=self.save_settings)
@@ -77,8 +59,6 @@ class PermissionSettingsFrame(CTkFrame):
         new_settings = {
             "ping_command": self.ping_command_setting.get(),
             "np_command": self.np_command.get(),
-            "queue_command": self.queue_command.get(),
-            "recent_played_command": self.recent_played_command.get(),
             "songrequest_command": self.songrequest_command.get(),
         }
 
