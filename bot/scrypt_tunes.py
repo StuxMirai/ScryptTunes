@@ -74,7 +74,7 @@ class Bot(commands.Bot):
             auth_manager=SpotifyOAuth(
                 client_id=self.config.spotify_client_id,
                 client_secret=self.config.spotify_secret,
-                redirect_uri="http://localhost:8080",
+                redirect_uri="http://127.0.0.1:8080",
                 cache_path=CACHE,
                 scope=[
                     "user-modify-playback-state",
