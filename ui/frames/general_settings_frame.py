@@ -1,4 +1,5 @@
 from customtkinter import CTkFrame, CTkButton
+from tkinter import messagebox
 
 from ui.frames.checkbox_setting_row import CheckboxSettingRow
 from ui.frames.text_setting_row import TextSettingRow
@@ -137,4 +138,10 @@ class GeneralSettingsFrame(CTkFrame):
         self.settings_controller.set("spotify_client_id", self.spotify_client_id.get())
         self.settings_controller.set("spotify_secret", self.spotify_secret.get())
         self.settings_controller.set("rate_limit", self.rate_limit_row.get())
-        self.settings_controller.save_config()
+        
+        result = self.settings_controller.save_config()
+        if result is True:
+            messagebox.showinfo("Settings Saved", "Settings saved successfully!")
+        else:
+            error_message = result[1] if isinstance(result, tuple) and len(result) > 1 else "Unknown error occurred"
+            messagebox.showerror("Settings Error", f"Failed to save settings.\n\nError: {error_message}")

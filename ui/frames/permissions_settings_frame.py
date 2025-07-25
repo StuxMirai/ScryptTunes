@@ -1,6 +1,5 @@
 from customtkinter import CTkFrame, CTkButton
-
-from customtkinter import CTkFrame, CTkButton
+from tkinter import messagebox
 
 from ui.frames.permission_setting_row import PermissionSettingRow
 from ui.models.config import PermissionSettingDict
@@ -84,5 +83,11 @@ class PermissionSettingsFrame(CTkFrame):
         }
 
         self.settings_controller.set('permissions', PermissionSettingDict(**new_settings))
-        self.settings_controller.save_config()
+        
+        result = self.settings_controller.save_config()
+        if result is True:
+            messagebox.showinfo("Settings Saved", "Permission settings saved successfully!")
+        else:
+            error_message = result[1] if isinstance(result, tuple) and len(result) > 1 else "Unknown error occurred"
+            messagebox.showerror("Settings Error", f"Failed to save permission settings.\n\nError: {error_message}")
 

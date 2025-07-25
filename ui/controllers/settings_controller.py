@@ -77,8 +77,12 @@ class SettingsController:
         return True
 
     def save_config(self):
-        with open(constants.CONFIG, "w") as f:
-            json.dump(self.config_model.model_dump(), f, indent=4)
+        try:
+            with open(constants.CONFIG, "w") as f:
+                json.dump(self.config_model.model_dump(), f, indent=4)
+            return True
+        except Exception as e:
+            return False, str(e)
 
     def save_user_blacklist(self):
         with open(constants.USER_BLACKLIST, "w") as f:
